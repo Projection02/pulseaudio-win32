@@ -14,21 +14,10 @@ jobs:
         run: |
           mkdir -p ./build &&
           docker build --tag pulseaudio-win32 --build-arg "PAW32_VERSION=$(echo "$(git describe --always --tags)" | sed -e "s/^v//g")" ./src &&
-          docker save pulseaudio-win32 |
-          tar -xOf - --wildcards '*/layer.tar' |
-          tar -xvf - -C ./build
-      - name: Upload (pasetup.exe)
+          docker save pulseaudio-win32 > imagesave.tar
+      - name: Upload (imagesave.tar)
         uses: actions/upload-artifact@v4
         with:
-          name: Installer (pasetup.exe)
-          path: build/pasetup.exe
-      - name: Upload (pulseaudio.zip)
-        uses: actions/upload-artifact@v4
-        with:
-          name: Binaries (pulseaudio.zip)
-          path: build/pulseaudio.zip
-      - name: Upload (pasvc.zip)
-        uses: actions/upload-artifact@v4
-        with:
-          name: Binaries (pasvc.zip)
-          path: build/pasvc.zip
+          name: imagesave.tar
+          path: imagesave.tar
+
