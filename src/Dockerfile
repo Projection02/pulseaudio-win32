@@ -170,7 +170,7 @@ RUN bsdtar -acf /pulseaudio.zip -C / pulseaudio
 
 ### pulseaudio (docs) ###
 
-FROM mingw32 as build-padoc
+FROM mingw32 AS build-padoc
 COPY --from=build-pulseaudio-stage1 /build/pulseaudio/man /build/pulseaudio/man
 COPY --from=build-pulseaudio-stage1 /src/pulseaudio/man   /src/pulseaudio/man
 RUN zypper --non-interactive install libxslt-tools && \
