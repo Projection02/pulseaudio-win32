@@ -18,17 +18,17 @@ jobs:
           tar -xOf - --wildcards '*/layer.tar' |
           tar -xvf - -C ./build
       - name: Upload (pasetup.exe)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Installer (pasetup.exe)
           path: build/pasetup.exe
       - name: Upload (pulseaudio.zip)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Binaries (pulseaudio.zip)
           path: build/pulseaudio.zip
       - name: Upload (pasvc.zip)
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: Binaries (pasvc.zip)
           path: build/pasvc.zip
